@@ -12,7 +12,7 @@ import path from "path";
 dotenv.config();
 const PORT=process.env.PORT;
 
-const __dirname=path.resolve;
+const __dirname = path.resolve();
 
 
 app.use(cors({
