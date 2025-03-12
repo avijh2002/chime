@@ -34,7 +34,7 @@ const Navbar = () => {
             </Link>
 
             {authUser && (
-              <>
+              <>{/* react fragment-to group without any parent element(since reacts needs single elemt returned*/ }
                 <Link to={"/profile"} className={`btn btn-sm gap-2`}>
                   <User className="size-5" />
                   <span className="hidden sm:inline">Profile</span>

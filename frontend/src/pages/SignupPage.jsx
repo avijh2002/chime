@@ -6,7 +6,7 @@ import AuthImagePattern from "../components/AuthImagePattern.jsx";
 import toast from "react-hot-toast";
 
 const SignupPage = () => {
-  const {signupData,signup,isSigningUp}=useAuthStore();
+  const {signup,isSigningUp}=useAuthStore();
 
   const [showPassword, setShowPassword] = useState(false);
   

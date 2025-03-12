@@ -4,9 +4,9 @@ import { generateToken } from "../libs/utils.js";
 import cloudinary from "../libs/cloudinary.js";
 
 export const signup = async (req, res) => {
-  const { fullName:fullname, email, password } = req.body;
+  const { fullName, email, password } = req.body;
   try {
-    if (!password || !email || !fullname) {
+    if (!password || !email || !fullName) {
       return res.status(400).json({ message: "all fields are required" });
     }
     if (password.length < 6) {
@@ -25,7 +25,7 @@ export const signup = async (req, res) => {
 
     const newUser = new User({
       email,
-      fullname,
+      fullName,
       password: hashedPassword,
     });
 
@@ -36,12 +36,7 @@ export const signup = async (req, res) => {
       return res.status(400).json({ message: "invalid user details" });
     }
 
-    res.status(200).json({
-      _id: newUser._id,
-      fullname: newUser.fullname,
-      email: newUser.email,
-      profilePic: newUser.profilePic,
-    });
+    res.status(200).json(newUser);
   } catch (error) {
     console.log("error in signup controller", error.message);
     res.status(500).json({ message: "internal server error" });
@@ -52,7 +47,7 @@ export const login = async (req, res) => {
   const { email, password } = req.body;
   try {
     const user = await User.findOne({ email });
-
+    console.log(user);
     if (!user) {
       return res.status(404).json({ message: "invalid credentials" });
     }
@@ -67,13 +62,7 @@ export const login = async (req, res) => {
 
     generateToken(user._id, res);
 
-    res.status(200).json({
-      message: "user logged in successfully",
-      _id: user._id,
-      fullName: user.fullName,
-      email: user.email,
-      profilePic: user.profilePic,
-    });
+    return res.status(200).json(user);
   } catch (error) {
     console.log("error in login controller", error.message);
     res.status(500).json({ message: "internal server error" });

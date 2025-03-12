@@ -1,26 +1,30 @@
 import mongoose from "mongoose";
 
-const userSchema=new mongoose.Schema({
-    fullname:{
-        type:String,
-        required:true,
+const userSchema = new mongoose.Schema(
+  {
+    email: {
+      type: String,
+      required: true,
+      unique: true,
     },
-    email:{
-        type:String,
-        required:true,
-        unique:true
+    fullName: {
+      type: String,
+      required: true,
     },
-    password:{
-        type:String,
-        required:true,
-        minlength:6
+    password: {
+      type: String,
+      required: true,
+      minlength: 6,
     },
-    profilePic:{
-        type:String,
-        default:""
-    }
+    profilePic: {
+      type: String,
+      default: "",
+    },
+  },
+  { timestamps: true }
+);
 
-},{timestamps:true});
+
 
 const User=mongoose.model("User",userSchema);//the user document is not created yet, it will be created when model first interacts with the database for the first tiem,ie, newUser.save(). NOTE: COLLECTION WILL BE CALLED users,ie lowercase and plural
 

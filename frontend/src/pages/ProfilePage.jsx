@@ -3,9 +3,10 @@ import { useAuthStore } from "../store/useAuthStore";
 import { Camera, Mail, User } from "lucide-react";
 
 const ProfilePage = () => {
+  
   const {authUser,isUpdatingProfile,updateProfile}=useAuthStore();
   const [selectedImg,setSelectedImg]=useState(null);
-
+  console.log(authUser)
 
   const handleImageUpload = async (e) => {
     const file = e.target.files[0];
@@ -73,7 +74,7 @@ const ProfilePage = () => {
                 <User className="w-4 h-4" />
                 Full Name
               </div>
-              <p className="px-4 py-2.5 bg-base-200 rounded-lg border ">{authUser?.fullname}</p>
+              <p className="px-4 py-2.5 bg-base-200 rounded-lg border ">{authUser?.fullName}</p>
             </div>
 
             <div className="space-y-1.5">
@@ -91,6 +92,7 @@ const ProfilePage = () => {
               <div className="flex items-center justify-between py-2 border-b border-zinc-700">
                 <span>Member Since</span>
                 <span>{authUser.createdAt?.split("T")[0]}</span>
+                
               </div>
               <div className="flex items-center justify-between py-2">
                 <span>Account Status</span>

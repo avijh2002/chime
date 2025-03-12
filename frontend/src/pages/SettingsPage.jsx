@@ -11,7 +11,7 @@ const SettingsPage = () => {
 
   const { theme, setTheme } = useThemeStore();
   
-  return (
+  return ( 
     <div className="h-screen container mx-auto px-4 pt-20 max-w-5xl">
       <div className="space-y-6">
         <div className="flex flex-col gap-1">
@@ -55,10 +55,10 @@ const SettingsPage = () => {
                 <div className="px-4 py-3 border-b border-base-300 bg-base-100">
                   <div className="flex items-center gap-3">
                     <div className="w-8 h-8 rounded-full bg-primary flex items-center justify-center text-primary-content font-medium">
-                      J
+                      A
                     </div>
                     <div>
-                      <h3 className="font-medium text-sm">John Doe</h3>
+                      <h3 className="font-medium text-sm">Avinash Jha</h3>
                       <p className="text-xs text-base-content/70">Online</p>
                     </div>
                   </div>
